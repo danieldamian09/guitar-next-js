@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 
-const nosotros = () => {
+const Nosotros = () => {
 	return (
 		<Layout
       pagina="nosotros"
@@ -10,4 +10,4 @@ const nosotros = () => {
 	);
 };
 
-export default nosotros;
+export default Nosotros;
