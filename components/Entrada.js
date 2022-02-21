@@ -1,3 +1,4 @@
+import {formatearFecha} from "../helpers/index"
 
 const Entrada = ({entrada}) => {
 
