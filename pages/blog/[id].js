@@ -1,12 +1,11 @@
 const EntradaBlog = ({entrada}) => {
-	console.log(entrada);
 
 	return <div>EntradaBlog</div>;
 };
 
 // Para obtener las rutas estaticas y poder usar getStaticProps
 export async function getStaticPaths() {
-	const url = `http://localhost:1337/blogs`;
+	const url = `${process.env.API_URL}/blogs`;
 	const respuesta = await fetch(url);
 	const entradas = await respuesta.json();
 
@@ -25,7 +24,7 @@ export async function getStaticPaths() {
 
 // Para obtener toda la informacion que va a colocar en las vistas
 export async function getStaticProps({params: {id}}) {
-	const url = `http://localhost:1337/blogs/${id}`;
+	const url = `${process.env.API_URL}/blogs/${id}`;
 	const respuesta = await fetch(url);
 	const entrada = await respuesta.json();
 
