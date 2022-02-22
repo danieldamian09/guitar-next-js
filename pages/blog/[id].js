@@ -1,6 +1,24 @@
-const EntradaBlog = ({entrada}) => {
+import Image from "next/image";
+import Layout from "../../components/Layout";
+import {formatearFecha} from "../../helpers"
 
-	return <div>EntradaBlog</div>;
+const EntradaBlog = ({entrada}) => {
+	const {titulo, contenido, imagen, published_at} = entrada;
+
+	return (
+		<Layout>
+			<main className="contenedor">
+				<h1 className="heading">{titulo}</h1>
+        <article>
+          <Image layout="responsive" width={800} height={600} src={imagen.url} alt={`Imagen entrada ${titulo}`}/>
+          <div>
+            <p>{formatearFecha(published_at)}</p>
+            <p>{contenido}</p>
+          </div>
+        </article>
+			</main>
+		</Layout>
+	);
 };
 
 // Para obtener las rutas estaticas y poder usar getStaticProps
