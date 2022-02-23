@@ -4,10 +4,12 @@ import {formatearFecha} from "../../helpers"
 import styles from "../../styles/Entrada.module.css"
 
 const EntradaBlog = ({entrada}) => {
-	const {titulo, contenido, imagen, published_at} = entrada;
+	const {titulo, contenido, imagen, published_at} = entrada[0];
 
 	return (
-		<Layout>
+		<Layout
+			pagina={titulo}
+		>
 			<main className="contenedor">
 				<h1 className="heading">{titulo}</h1>
         <article className={styles.entrada}>
@@ -31,7 +33,7 @@ export async function getStaticPaths() {
 	// Paths de las rutas iteramos todas la entradas para retornar los ID (cuando tenemos pocas rutas)
 	const paths = entradas.map((entrada) => ({
 		params: {
-			id: entrada.id.toString(),
+			url: entrada.url,
 		},
 	}));
 
@@ -42,9 +44,9 @@ export async function getStaticPaths() {
 }
 
 // Para obtener toda la informacion que va a colocar en las vistas
-export async function getStaticProps({params: {id}}) {
-	const url = `${process.env.API_URL}/blogs/${id}`;
-	const respuesta = await fetch(url);
+export async function getStaticProps({params: {url}}) {
+	const urlBlog = `${process.env.API_URL}/blogs?url=${url}`;
+	const respuesta = await fetch(urlBlog);
 	const entrada = await respuesta.json();
 
 	return {
