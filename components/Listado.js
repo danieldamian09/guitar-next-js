@@ -1,8 +1,13 @@
+import Guitarra from "./Guitarra"
 
 const Listado = ({guitarras}) => {
 
   return (
-    <h1>Desde Listado</h1>
+    <div>
+      {guitarras.map(guitarra => (
+        <Guitarra key={guitarra.id} guitarra={guitarra} />
+      ))}
+    </div>
   )
 }
 
