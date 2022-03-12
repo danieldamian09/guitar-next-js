@@ -1,9 +1,8 @@
 import Layout from "../components/Layout";
 import Listado from "../components/Listado"
+import Curso from "../components/Curso";
 
-export default function Home({guitarras, cursos}) {
-
-	console.log(guitarras, cursos)
+export default function Home({guitarras, curso}) {
 
 	return (
 		<Layout
@@ -15,6 +14,10 @@ export default function Home({guitarras, cursos}) {
 				guitarras={guitarras}
 			/>
 		</main>
+
+		<Curso 
+			curso={curso}
+		/>
 		</Layout>
 	);
 }
@@ -30,7 +33,7 @@ export async function getServerSideProps(){
 		fetch(urlCursos)
 	])
 
-	const [guitarras, cursos] = await Promise.all([
+	const [guitarras, curso] = await Promise.all([
 		resGuitarras.json(),
 		resCursos.json()
 	])
@@ -39,7 +42,7 @@ export async function getServerSideProps(){
 	return {
 		props: {
 			guitarras,
-			cursos
+			curso
 		}
 	}
 }
