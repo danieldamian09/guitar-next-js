@@ -2,9 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "../styles/Header.module.css";
 
-const Header = ({ guitarra }) => {
-	
-	console.log(guitarra)
+const Header = ({guitarra}) => {
 
 	return (
 		<header className={styles.header}>
@@ -23,12 +21,12 @@ const Header = ({ guitarra }) => {
 					</nav>
 				</div>
 				{guitarra && (
-					<div>
-						<h1>Modelo: {guitarra.nombre}</h1>
+					<div className={styles.modelo}>
+						<h2>Modelo: {guitarra.nombre}</h2>
 						<p>{guitarra.descripcion}</p>
-						<p>${guitarra.precio}</p>
+						<p className={styles.precio}>${guitarra.precio}</p>
 						<Link href={`/guitarras/${guitarra.url}`}>
-							<a>Ver Producto</a>
+							<a className={styles.enlace} >Ver Producto</a>
 						</Link>
 					</div>
 				)}
