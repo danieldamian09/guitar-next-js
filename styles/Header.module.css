@@ -113,8 +113,37 @@
 @media (min-width: 992px) {
 	.guitarra{
 		display: block;
-		position: absolute;	
-		right: 0;	
+		position: absolute;
+		right: 0;
 		bottom: -8.5px;
+		animation-name: mostrarGuitarra;
+		animation-duration: 1s;
+		animation-iteration-count: 1;
+		animation-delay: 0s;
+		animation-timing-function: ease-in-out;
+}
+}
+
+@keyframes mostrarGuitarra {
+	0%{
+		opacity: 0;
+		transform: translateX(-10rem);
+		-webkit-transform: translateX(-10rem);
+		-moz-transform: translateX(-10rem);
+		-ms-transform: translateX(-10rem);
+		-o-transform: translateX(-10rem);
+}
+
+	60%{
+		opacity: 0;
 	}
+
+	100%{
+		opacity: 1;
+		transform: translateX(0);
+		-webkit-transform: translateX(0);
+		-moz-transform: translateX(0);
+		-ms-transform: translateX(0);
+		-o-transform: translateX(0);
+}
 }
