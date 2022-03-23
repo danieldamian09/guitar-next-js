@@ -5,17 +5,25 @@ import "../styles/globals.css";
 function MyApp({Component, pageProps}) {
 	const [carrito, setCarrito] = useState([]);
 
-  const agregarCarrito = (producto) => {
-    
-    // Identificar si un elemento ya esta en el carrito
-    if (carrito.some(articulo => articulo.id === producto.id)) {
-      // Producto duplicado
-      console.log("producto duplicado")
-    } else {
-      console.log("nuevo producto")
-    }
+	const agregarCarrito = (producto) => {
+		// Identificar si un elemento ya esta en el carrito
+		if (carrito.some((articulo) => articulo.id === producto.id)) {
+			// Producto duplicado
+      const carritoActualizado = carrito.map(articulo => {
+        // Identificar cual articulo vamos a actualizar
+        if (articulo.id === producto.id) {
+          articulo.cantidad = producto.cantidad
+        }
 
-		setCarrito([...carrito, producto]);
+        return articulo
+      })
+
+      setCarrito(carritoActualizado)
+    } else {
+      // Producto Nuevo
+			console.log("nuevo producto");
+			setCarrito([...carrito, producto]);
+		}
 	};
 
 	return (
