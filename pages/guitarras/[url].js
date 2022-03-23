@@ -2,8 +2,15 @@ import Image from "next/image";
 import Layout from "../../components/Layout";
 import styles from "../../styles/Guitarra.module.css";
 
-const Producto = ({guitarra}) => {
+const Producto = ({guitarra, agregarCarrito}) => {
 	const {nombre, precio, imagen, descripcion} = guitarra[0];
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+
+		// Agregar producto al carrito
+		
+	};
 
 	return (
 		<Layout pagina={`${nombre}`}>
@@ -19,7 +26,7 @@ const Producto = ({guitarra}) => {
 					<h3>{nombre}</h3>
 					<p className={styles.descripcion}>{descripcion}</p>
 					<p className={styles.precio}>{`$${precio}`}</p>
-					<form className={styles.formulario}>
+					<form className={styles.formulario} onSubmit={handleSubmit}>
 						<label>Cantidad:</label>
 						<select>
 							<option value="">-- Seleccione --</option>
@@ -31,10 +38,7 @@ const Producto = ({guitarra}) => {
 							<option value="6">6</option>
 							<option value="7">7</option>
 						</select>
-						<input 
-							type="submit"
-							value="Agregar al Carrito"
-						/>
+						<input type="submit" value="Agregar al Carrito" />
 					</form>
 				</div>
 			</div>
