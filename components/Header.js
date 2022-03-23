@@ -6,8 +6,6 @@ import styles from "../styles/Header.module.css";
 const Header = ({guitarra}) => {
 	const router = useRouter();
 
-	console.log(router.pathname);
-
 	return (
 		<header className={styles.header}>
 			<div className="contenedor">
