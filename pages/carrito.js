@@ -3,7 +3,6 @@ import styles from "../styles/Carrito.module.css"
 
 const Carrito = ({ carrito }) => {
   
-  console.log(carrito)
 
 	return (
 		<Layout pagina="Carrito de Compras">

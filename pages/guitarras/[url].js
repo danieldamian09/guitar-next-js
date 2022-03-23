@@ -1,15 +1,20 @@
+import {useState} from "react"
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import styles from "../../styles/Guitarra.module.css";
 
-const Producto = ({guitarra, agregarCarrito}) => {
+const Producto = ({ guitarra, agregarCarrito }) => {
+	
+	const [cantidad, setCantidad] = useState(1)
+
+
 	const {nombre, precio, imagen, descripcion} = guitarra[0];
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		// Agregar producto al carrito
-		
+
 	};
 
 	return (
@@ -28,7 +33,10 @@ const Producto = ({guitarra, agregarCarrito}) => {
 					<p className={styles.precio}>{`$${precio}`}</p>
 					<form className={styles.formulario} onSubmit={handleSubmit}>
 						<label>Cantidad:</label>
-						<select>
+						<select
+							value={cantidad}
+							onChange={ (e) => (setCantidad(parseInt(e.target.value)))}
+						>
 							<option value="">-- Seleccione --</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
