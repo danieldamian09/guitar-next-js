@@ -8,12 +8,27 @@ const Producto = ({ guitarra, agregarCarrito }) => {
 	const [cantidad, setCantidad] = useState(1)
 
 
-	const {nombre, precio, imagen, descripcion} = guitarra[0];
+	const {nombre, precio, imagen, descripcion, id} = guitarra[0];
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
+		// Validacion
+		if (cantidad < 1) {
+			alert("Cantidad no valida")
+			return
+		}
+
 		// Agregar producto al carrito
+		const guitarraSeleccionada = {
+			id,
+			imagen: imagen[0].url,
+			nombre,
+			precio,
+			cantidad,
+		}
+
+		agregarCarrito(guitarraSeleccionada)
 
 	};
 
@@ -37,7 +52,7 @@ const Producto = ({ guitarra, agregarCarrito }) => {
 							value={cantidad}
 							onChange={ (e) => (setCantidad(parseInt(e.target.value)))}
 						>
-							<option value="">-- Seleccione --</option>
+							<option value="0">-- Seleccione --</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
