@@ -12,7 +12,7 @@ function MyApp({Component, pageProps}) {
       const carritoActualizado = carrito.map(articulo => {
         // Identificar cual articulo vamos a actualizar
         if (articulo.id === producto.id) {
-          articulo.cantidad = producto.cantidad
+          articulo.cantidad = producto.cantidad + articulo.cantidad
         }
 
         return articulo
