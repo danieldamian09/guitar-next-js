@@ -9,18 +9,18 @@ function MyApp({Component, pageProps}) {
 		// Identificar si un elemento ya esta en el carrito
 		if (carrito.some((articulo) => articulo.id === producto.id)) {
 			// Producto duplicado
-      const carritoActualizado = carrito.map(articulo => {
-        // Identificar cual articulo vamos a actualizar
-        if (articulo.id === producto.id) {
-          articulo.cantidad = producto.cantidad + articulo.cantidad
-        }
+			const carritoActualizado = carrito.map((articulo) => {
+				// Identificar cual articulo vamos a actualizar
+				if (articulo.id === producto.id) {
+					articulo.cantidad = producto.cantidad;
+				}
 
-        return articulo
-      })
+				return articulo;
+			});
 
-      setCarrito(carritoActualizado)
-    } else {
-      // Producto Nuevo
+			setCarrito(carritoActualizado);
+		} else {
+			// Producto Nuevo
 			console.log("nuevo producto");
 			setCarrito([...carrito, producto]);
 		}
