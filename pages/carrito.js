@@ -16,7 +16,7 @@ const Carrito = ({carrito}) => {
 										<Image
 											layout="responsive"
 											width={250}
-											height={450}
+											height={500}
 											src={producto.imagen}
 											alt={producto.nombre}
 										/>
