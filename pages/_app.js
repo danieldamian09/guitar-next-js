@@ -1,9 +1,20 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import "../styles/normalize.css";
 import "../styles/globals.css";
 
 function MyApp({Component, pageProps}) {
 	const [carrito, setCarrito] = useState([]);
+
+	// Obtener de LocalStorage
+	useEffect(() => { 
+		const carritoLS = JSON.parse(localStorage.getItem("carrito")) ?? [];
+		setCarrito(carritoLS);
+	}, []);
+
+	// Enviar LocalStorage
+	useEffect(() => {
+		localStorage.setItem("carrito", JSON.stringify(carrito));
+	}, [carrito])
 
 	const agregarCarrito = (producto) => {
 		// Identificar si un elemento ya esta en el carrito
