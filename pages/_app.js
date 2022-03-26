@@ -6,7 +6,7 @@ function MyApp({Component, pageProps}) {
 	const [carrito, setCarrito] = useState([]);
 
 	// Obtener de LocalStorage
-	useEffect(() => { 
+	useEffect(() => {
 		const carritoLS = JSON.parse(localStorage.getItem("carrito")) ?? [];
 		setCarrito(carritoLS);
 	}, []);
@@ -14,7 +14,7 @@ function MyApp({Component, pageProps}) {
 	// Enviar LocalStorage
 	useEffect(() => {
 		localStorage.setItem("carrito", JSON.stringify(carrito));
-	}, [carrito])
+	}, [carrito]);
 
 	const agregarCarrito = (producto) => {
 		// Identificar si un elemento ya esta en el carrito
@@ -47,7 +47,13 @@ function MyApp({Component, pageProps}) {
 		});
 
 		setCarrito(carritoActualizado);
-	}
+	};
+
+	const eliminarProducto = (id) => {
+		const carritoActualizado = carrito.filter((articulo) => articulo.id !== id);
+
+		setCarrito(carritoActualizado);
+	};
 
 	return (
 		<Component
@@ -55,6 +61,7 @@ function MyApp({Component, pageProps}) {
 			carrito={carrito}
 			actualizarCantidad={actualizarCantidad}
 			agregarCarrito={agregarCarrito}
+			eliminarProducto={eliminarProducto}
 		/>
 	);
 }
