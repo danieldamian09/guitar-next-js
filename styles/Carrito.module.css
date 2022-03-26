@@ -1,6 +1,7 @@
 .contenido{
   display: grid;
   gap: 4rem;
+  align-items: flex-start;
 }
 
 @media (min-width: 768px) {
@@ -86,4 +87,14 @@
 
 .eliminar:hover{
   cursor: pointer;
+}
+
+.resumen{
+  background-color: #F9FAfB;
+  padding: 3rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
 }
