@@ -32,15 +32,28 @@ function MyApp({Component, pageProps}) {
 			setCarrito(carritoActualizado);
 		} else {
 			// Producto Nuevo
-			console.log("nuevo producto");
 			setCarrito([...carrito, producto]);
 		}
 	};
+
+	const actualizarCantidad = (producto) => {
+		const carritoActualizado = carrito.map((articulo) => {
+			// Identificar cual articulo vamos a actualizar
+			if (articulo.id === producto.id) {
+				articulo.cantidad = producto.cantidad;
+			}
+
+			return articulo;
+		});
+
+		setCarrito(carritoActualizado);
+	}
 
 	return (
 		<Component
 			{...pageProps}
 			carrito={carrito}
+			actualizarCantidad={actualizarCantidad}
 			agregarCarrito={agregarCarrito}
 		/>
 	);
