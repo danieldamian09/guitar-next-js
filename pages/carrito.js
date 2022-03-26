@@ -23,8 +23,8 @@ const Carrito = ({carrito, actualizarCantidad}) => {
 									</div>
 									<div>
 										<p className={styles.nombre}>{producto.nombre}</p>
-										<div>
-											<p className={styles.cantidad}>Cantidad:</p>
+										<div className={styles.cantidad}>
+											<p>Cantidad:</p>
 											<select
 												value={producto.cantidad}
 											className={styles.select}
